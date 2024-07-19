@@ -7,6 +7,13 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./*"],
+      "@pages": ["./src/pages"],
+      "@auth-type": ["./src/types/auth.ts"],
+      "@service": ["./src/service/index.ts"],
+      "@token-service": ["./src/utils/token-service.ts"],
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",
