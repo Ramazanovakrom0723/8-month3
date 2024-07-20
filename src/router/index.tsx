@@ -1,25 +1,26 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
-import App from "../App";
-import { SignIn, Main, Service } from "@pages";
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import {Login, Register, Clients, Settings, Message, Home, Orders, Services} from "@pages"
+import App from '../App'
+import MainLayout from "@layout";
 
-const Index = () => {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<App />}>
-        <Route index element={<SignIn />} />
-        <Route path="main/*" element={<Main />}>
-          <Route index element={<Service />} />
-        </Route>
-      </Route>
+export default function Router(){
+    const root = createBrowserRouter(
+        createRoutesFromElements(
+            <Route path="/" element={<App/>}>
+                <Route path="/" element={<Login/>}/>
+                <Route path="/register" element={<Register/>}/>
+                <Route path="/mainlayout/*" element={<MainLayout/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path="home" element={<Home/>}/>
+                    <Route path="clients" element={<Clients/>}/>
+                    <Route path="settings" element={<Settings/>}/>
+                    <Route path="message" element={<Message/>}/>
+                    <Route path="orders" element={<Orders/>}/>
+                    <Route path="services" element={<Services/>}/>
+                </Route>
+            </Route>
+        )
     )
-  );
 
-  return <RouterProvider router={router} />;
-};
-
-export default Index;
+    return <RouterProvider router={root} />
+}
